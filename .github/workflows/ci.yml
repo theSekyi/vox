@@ -23,3 +23,20 @@ jobs:
           python script.py
       - name: Run Tests
         run: pytest test.py
+
+      - name: black
+        uses: lgeiger/black-action@master
+        with:
+          args: .
+      - name: CHeck for modified files
+        id: git-check
+        run: echo ::set-output name=modified::$(if git diff-index --quiet HEAD --; then echo "false"; else echo "true"; fi)
+      - name: Push Changes
+        if: steps.git-check.outputs.modified == 'true'
+        run: |
+          git config --global user.name 'theSekyi'
+          git config --global user.email 'thesekyi@user.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          git checkout $GITHUB_HEAD_REF
+          git commit -am "automated changes"
+          git push
