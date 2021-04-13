@@ -8,3 +8,11 @@ jobs:
     steps:
       - name: Print Hello
         run: echo Hello
+  
+  ascii-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ASCII welcome
+        uses: mscoutermarsh/ascii-art-action@master
+        with:
+          text: 'You're welcome'
