@@ -17,7 +17,7 @@
 #         with:
 #           text: 'You're welcome'
 
-name: Python Example
+name: Basic
 
 on: push
 

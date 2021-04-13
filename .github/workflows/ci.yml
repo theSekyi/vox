@@ -18,6 +18,7 @@ jobs:
           pip install pytest
           pip install -U scikit-learn
       - name: Run Script
-        run: python script.py
+        run: |
+          python script.py
       - name: Run Tests
         run: pytest test.py
