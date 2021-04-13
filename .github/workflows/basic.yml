@@ -17,16 +17,16 @@
 #         with:
 #           text: 'You're welcome'
 
-name: Basic
+# name: Basic
 
-on: push
+# on: push
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    name: Python Script
-    steps:
-      - name: Python Setup
-        uses: actions/set-python@v2
-        with:
-          text: 'Welcome'
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     name: Python Script
+#     steps:
+#       - name: Python Setup
+#         uses: actions/set-python@v2
+#         with:
+#           text: 'Welcome'
