@@ -1,0 +1,10 @@
+name: Basic
+
+on: push
+
+jobs:
+  trial-job:
+    runs-on: ubuntu-latest #mac, windows
+    steps:
+      - name: Print Hello
+        run: echo Hello
