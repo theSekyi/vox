@@ -15,9 +15,7 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pandas
-          pip install pytest
-          pip install -U scikit-learn
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Run Script
         run: |
           python script.py
@@ -34,8 +32,8 @@ jobs:
       - name: Push Changes
         if: steps.git-check.outputs.modified == 'true'
         run: |
-          git config --global user.name 'theSekyi'
-          git config --global user.email 'thesekyi@user.noreply.github.com'
+          git config --global user.name ${{ secrets.MY_USERNAME }}
+          git config --global user.email ${{ secrets.MY_EMAIL }}
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
           git checkout $GITHUB_HEAD_REF
           git commit -am "automated changes"
